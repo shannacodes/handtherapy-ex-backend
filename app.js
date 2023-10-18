@@ -2,7 +2,7 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const morgan = require("morgan"); // Morgan installed
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -12,13 +12,6 @@ var app = express();
 const hostname = "localhost";
 const port = 3005;
 
-app.use((req, res) => {
-  console.log(req.headers);
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/html");
-  res.end("<html><body><h1>This is an Express Server</h1></body></html>");
-});
-
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
@@ -27,14 +20,20 @@ app.listen(port, hostname, () => {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
-app.use(logger("dev"));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+
+app.use((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  res.end("<html><body><h1>This is an Express Server</h1></body></html>");
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
