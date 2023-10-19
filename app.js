@@ -2,10 +2,11 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
-const morgan = require("morgan"); // Morgan installed
+const morgan = require("morgan"); // morgan installed
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const exerciseRouter = require("./routes/exerciseRouter");
 
 var app = express();
 
@@ -24,11 +25,15 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+app.use(express.static(path.join(__dirname, "/public")));
+
+app.use("/exercises", exerciseRouter); // 2) link path to router
+
+// the following must go AFTER express.static
 app.use((req, res) => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/html");
