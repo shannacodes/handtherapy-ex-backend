@@ -12,6 +12,14 @@ const exerciseSchema = new Schema(
       type: String,
       required: true,
     },
+    instr: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
