@@ -1,5 +1,6 @@
 const express = require("express");
 const Exercise = require("../models/exercise"); // can use exported exercise model
+const authenticate = require("../authenticate");
 
 const exerciseRouter = express.Router();
 
@@ -14,7 +15,7 @@ exerciseRouter // chaining for exerciseRouter /exercises
       })
       .catch((err) => next(err));
   })
-  .post((req, res, next) => {
+  .post(authenticate.verifyUser, (req, res, next) => {
     Exercise.create(req.body)
       .then((exercise) => {
         console.log("Exercise Created ", exercise);
@@ -24,12 +25,12 @@ exerciseRouter // chaining for exerciseRouter /exercises
       })
       .catch((err) => next(err));
   })
-  .put((req, res) => {
+  .put(authenticate.verifyUser, (req, res) => {
     res.statusCode = 403;
     res.setHeader("Content-Type", "text/plain");
     res.end("PUT operation not supported on /exercises");
   })
-  .delete((req, res) => {
+  .delete(authenticate.verifyUser, (req, res) => {
     res.statusCode = 403;
     res.setHeader("Content-Type", "text/plain");
     res.end("DELETE operation not supported on /exercises");
@@ -52,7 +53,7 @@ exerciseRouter // chaining for /exercises/:exerciseId
       `POST operation not supported on /exercises/${req.params.exerciseId}`
     );
   })
-  .put((req, res, next) => {
+  .put(authenticate.verifyUser, (req, res, next) => {
     Exercise.findByIdAndUpdate(
       req.params.exerciseId,
       {
@@ -67,7 +68,7 @@ exerciseRouter // chaining for /exercises/:exerciseId
       })
       .catch((err) => next(err));
   })
-  .delete((req, res, next) => {
+  .delete(authenticate.verifyUser, (req, res, next) => {
     Exercise.findByIdAndDelete(req.params.exerciseId)
       .then((response) => {
         res.statusCode = 200;
