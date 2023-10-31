@@ -78,4 +78,4 @@ exerciseRouter // chaining for /exercises/:exerciseId
       .catch((err) => next(err));
   });
 
-module.exports = exerciseRouter; // NOTE TO SELF: don't forget to export this
+module.exports = exerciseRouter;
