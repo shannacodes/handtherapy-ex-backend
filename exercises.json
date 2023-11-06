@@ -1,0 +1,66 @@
+[
+    {
+      "name": "Tendon Glides",
+      "desc": "Exercises aimed to glide different tendons of the fingers through various hand positions to promote mobility and flexibility.",
+      "instr": "Perform the following series of movements with your hand...",
+      "category": "Finger",
+      "image": "src/images/tendonglides.png"
+    },
+    {
+      "name": "Flexor Forearm Stretch",
+      "desc": "Stretch that targets the forearm, wrist, and finger flexors.",
+      "instr": "1) Relax your affected arm. 2) Use your unaffected hand to bend the affected wrist up as shown...",
+      "category": "Wrist",
+      "image": "src/images/flexorfastretch.png"
+    },
+    {
+      "name": "PIPJ Blocking",
+      "desc": "Exericse that isolates flexion at the PIP Joint(s).",
+      "instr": "Grasp the affected finger, bracing below the middle knuckle, and actively bend the finger as shown.",
+      "category": "Finger",
+      "image": "src/images/pipblocking.png"
+    },
+    {
+      "name": "Wrist Flexion-Extension AROM",
+      "desc": "Exercise that targets full active range of motion for the wrist.",
+      "instr": "Rest your forearm on a table and bend your wrist up and down with your palm face down as shown.",
+      "category": "Wrist",
+      "image": "src/images/wristrom.png"
+    },
+    {
+      "name": "Wrist Radial and Ulnar Deviation with Towel",
+      "desc": "Exercise that involves passively flexing the wrist to increase mobility.",
+      "instr": "Place a small towel on a table and then place the palm of your hand on the towel as shown. Next, bend your wrist side-to-side as you slide the towel across the table.",
+      "category": "Wrist"
+    },
+    {
+      "name": "Thumb MP Blocking Flexion",
+      "desc": "Exercise that involves isolating the thumb MPJ to increase mobility.",
+      "instr": "Support your hand below your thumb as shown and bend the thumb over your fingers.",
+      "category": "Finger"
+    },
+    {
+      "name": "Elbow Extension Stretch / PROM",
+      "desc": "Exercise that involves passively extending (or straightening) the elbow to increase mobility.",
+      "instr": "Place your elbow on the edge of a table with the arm supported on a pillow. Then, use your other hand to press it into a more straightened position until you feel a mild stretch.",
+      "category": "Elbow"
+    },
+    {
+      "name": "Shoulder Flexion AAROM Supine with Cane",
+      "desc": "Exercise that targets increasing mobility with shoulder flexion using cane.",
+      "instr": "Lying on your back and holding a wand or cane, slowly raise the wand towards overhead. Use your unaffected arm to assist with the movement.",
+      "category": "Shoulder"
+    },
+    {
+      "name": "Elbow Flexion Stretch / PROM",
+      "desc": "Exercise that involves passively flexing (or bending) the elbow to increase mobility.",
+      "instr": "Place your elbow on a table and use your other hand to bend it into a more bent position.",
+      "category": "Elbow"
+    },
+    {
+      "name": "Shoulder External Rotation with Elastic Band",
+      "desc": "Strengthening exercise that targets the shoulder external rotators.",
+      "instr": "Start by holding an elastic band with your palms directed upwards and your elbows bent to 90 degrees by your side. Next, move your hands away from each other. Your shoulder blades should move closer together as your shoulders rotate externally (forearms move from pointed forward to pointed towards the side). Return to starting position and repeat.",
+      "category": "Shoulder"
+    }
+  ]

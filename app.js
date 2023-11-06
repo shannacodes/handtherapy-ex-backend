@@ -1,5 +1,5 @@
 var createError = require("http-errors");
-var express = require("express");
+const express = require("express");
 var path = require("path");
 const morgan = require("morgan"); // morgan installed
 const passport = require("passport");
@@ -12,38 +12,45 @@ const exerciseRouter = require("./routes/exerciseRouter");
 // connects express server to mongodb/mongoose
 const mongoose = require("mongoose");
 
-const url = config.mongoUrl;
+const url = config.mongoConnectionString;
 
-const connect = mongoose.connect(url, {
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const connect = mongoose
+  .connect(url, {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("App is connected to database");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 connect.then(
   () => console.log("Connected correctly to server"),
   (err) => console.log(err)
 );
 
-var app = express();
+const app = express();
 
-app.all("*", (req, res, next) => {
-  if (req.secure) {
-    return next();
-  } else {
-    console.log(
-      `Redirecting to: https://${req.hostname}:${app.get("secPort")}${req.url}`
-    );
-    res.redirect(
-      301,
-      `https://${req.hostname}:${app.get("secPort")}${req.url}`
-    );
-  }
-});
+// app.all("*", (req, res, next) => {
+//   if (req.secure) {
+//     return next();
+//   } else {
+//     console.log(
+//       `Redirecting to: https://${req.hostname}:${app.get("secPort")}${req.url}`
+//     );
+//     res.redirect(
+//       301,
+//       `https://${req.hostname}:${app.get("secPort")}${req.url}`
+//     );
+//   }
+// });
 
 const hostname = "localhost";
-const port = 3005;
+const port = 4000;
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
@@ -62,7 +69,7 @@ app.use(express.urlencoded({ extended: false }));
 // passport MUST go after passport.session
 app.use(passport.initialize());
 
-// public, non-authenticated routes at the moment
+// public routes
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
@@ -70,7 +77,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/exercises", exerciseRouter); // 2) link path to router
 
-// the following must go AFTER expr ess.static
+// the following must go AFTER express.static
 app.use((req, res) => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/html");
@@ -93,4 +100,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+// module.exports = app;
+
+exports.myApp = app;

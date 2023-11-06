@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -14,6 +15,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "4.1",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
@@ -21,5 +23,17 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
     "session-file-store": "^1.5.0"
-  }
+  },
+  "description": "This is the MERN backend for my Hand Ex App.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shannacodes/handtherapy-ex-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shannacodes/handtherapy-ex-backend/issues"
+  },
+  "homepage": "https://github.com/shannacodes/handtherapy-ex-backend#readme"
 }
