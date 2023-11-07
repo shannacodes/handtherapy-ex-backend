@@ -54,8 +54,8 @@ exerciseRouter // chaining for exerciseRouter /exercises
   );
 
 exerciseRouter // chaining for /exercises/:exerciseId
-  .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
   .route("/:exerciseId")
+  .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
   .get(cors.cors, (req, res, next) => {
     Exercise.findById(req.params.exerciseId)
       .then((exercise) => {
