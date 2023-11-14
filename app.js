@@ -4,6 +4,7 @@ var path = require("path");
 const morgan = require("morgan"); // morgan installed
 const passport = require("passport");
 const config = require("./config");
+const cors = require("./routes/cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -69,12 +70,15 @@ app.use(express.urlencoded({ extended: false }));
 // passport MUST go after passport.session
 app.use(passport.initialize());
 
+// cors enabled
+app.use(cors.cors);
+
 // public routes
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 app.use(express.static(path.join(__dirname, "/public")));
 
+app.use("/users", usersRouter);
 app.use("/exercises", exerciseRouter); // 2) link path to router
 
 // the following must go AFTER express.static
