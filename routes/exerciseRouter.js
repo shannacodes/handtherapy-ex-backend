@@ -68,7 +68,7 @@ exerciseRouter // chaining for /exercises/:exerciseId
   .post(
     cors.corsWithOptions,
     authenticate.verifyUser,
-    authenticate.verifyAdmin,
+    // authenticate.verifyAdmin,
     (req, res) => {
       res.statusCode = 403;
       res.end(
@@ -79,7 +79,7 @@ exerciseRouter // chaining for /exercises/:exerciseId
   .put(
     cors.corsWithOptions,
     authenticate.verifyUser,
-    authenticate.verifyAdmin,
+    // authenticate.verifyAdmin,
     (req, res, next) => {
       Exercise.findByIdAndUpdate(
         req.params.exerciseId,
@@ -99,7 +99,7 @@ exerciseRouter // chaining for /exercises/:exerciseId
   .delete(
     cors.corsWithOptions,
     authenticate.verifyUser,
-    authenticate.verifyAdmin,
+    // authenticate.verifyAdmin,
     (req, res, next) => {
       Exercise.findByIdAndDelete(req.params.exerciseId)
         .then((response) => {
