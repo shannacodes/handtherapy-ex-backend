@@ -20,7 +20,7 @@ exerciseRouter // chaining for exerciseRouter /exercises
   .post(
     cors.corsWithOptions,
     authenticate.verifyUser,
-    authenticate.verifyAdmin,
+    // authenticate.verifyAdmin,
     (req, res, next) => {
       Exercise.create(req.body)
         .then((exercise) => {

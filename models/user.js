@@ -7,12 +7,6 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  // firstname: {
-  //   type: String,
-  // },
-  // lastname: {
-  //   type: String,
-  // },
 });
 
 // username and pw get added by this
