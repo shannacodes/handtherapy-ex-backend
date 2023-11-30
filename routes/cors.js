@@ -5,6 +5,8 @@ const whitelist = [
   "https://localhost:3000",
   "http://localhost:3443",
   "https://localhost:3443",
+  "https://us-central1-hand-ex-gen.cloudfunctions.net/myApp/",
+  "https://us-central1-hand-ex-gen.cloudfunctions.net/",
 ];
 const corsOptionsDelegate = (req, callback) => {
   let corsOptions;
